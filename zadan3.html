@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <title>Топ фильмов и сериалов</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <!-- Левая колонка с таблицей -->
+            <div class="col-md-8">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Название</th>
+                            <th>Рейтинг</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-year="2008-2013" data-title="Во все тяжкие" data-rating="8.9" data-director="Винс Гиллиган"
+                            data-image="https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/fb35416f-3b0d-4b96-bc65-cf6923f9e329/300x450"
+                            onclick="onRowClick(this)">
+                            <td>Во все тяжкие</td>
+                            <td>8.9</td>
+                        </tr>
+                        <tr data-year="2015-2022" data-title="Лучше звоните Солу" data-rating="8.4" data-director="Винс Гиллиган"
+                            data-image="https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/87298984-6286-425f-ab61-9afbf2c78afb/300x450"
+                            onclick="onRowClick(this)">
+                            <td>Лучше звоните Солу</td>
+                            <td>8.4</td>
+                        </tr>
+                        <tr data-year="2013-..." data-title="Рик и Морти" data-rating="8.9" data-director="Уэсли Арчер"
+                            data-image="https://avatars.mds.yandex.net/get-kinopoisk-image/10835644/9a7203bd-7f9d-4f45-bc39-cdf7d4156332/300x450"
+                            onclick="onRowClick(this)">
+                            <td>Рик и Морти</td>
+                            <td>8.9</td>
+                        </tr>
+                        <tr data-year="2005" data-title="Звёздные войны: Эпизод 3 – Месть ситхов" data-rating="8.1" data-director="Джордж Лукас"
+                            data-image="https://avatars.mds.yandex.net/get-kinopoisk-image/4486454/2720c811-4065-43cf-9fc5-bd18ee3dbbf0/300x450"
+                            onclick="onRowClick(this)">
+                            <td>Звёздные войны: Эпизод 3 – Месть ситхов</td>
+                            <td>8.1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Правая колонка с информацией -->
+            <div class="col-md-4">
+                <div class="shadow p-3 text-center bg-light">
+                    <img id="poster" src="https://via.placeholder.com/200" width="100%" class="mb-2" alt="Постер">
+                    <h3 id="title">Выберите фильм</h3>
+                    <p id="director">Режиссёр: -</p>
+                    <p id="year">Годы выхода: -</p>
+                    <p id="rating">Рейтинг: -</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function onRowClick(row) {
+            document.getElementById("title").innerText = row.dataset.title;
+            document.getElementById("director").innerText = "Режиссёр: " + row.dataset.director;
+            document.getElementById("year").innerText = "Год выхода: " + row.dataset.year;
+            document.getElementById("rating").innerText = "Рейтинг: " + row.dataset.rating;
+            document.getElementById("poster").src = row.dataset.image;
+
+            // Подсвечивание выбранной строки
+            document.querySelectorAll(".table tbody tr").forEach(el => {
+                el.classList.remove("table-secondary");
+            });
+            row.classList.add("table-secondary");
+        }
+    </script>
+
+    <style>
+        .table tr td:hover {
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>
